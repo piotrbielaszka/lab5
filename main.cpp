@@ -9,6 +9,7 @@ void print_list(list<Human> &lst);
 void print_list_reverse(list<Human> &lst);
 void create_humans(list<Human> &hum_list);
 void help();
+void bday(list<Human> &lst);
 
 int main()
 {
@@ -34,6 +35,8 @@ int main()
             print_list(hum_list);
         else if (cmd == "list_rev")
             print_list_reverse(hum_list);
+        else if (cmd == "bday")
+            bday(hum_list);
     }
     return 0;
 }
@@ -56,7 +59,8 @@ void help()
     cout << "pop: usuwa ostsnia osobe\n";
     cout << "list: wypisuje liste ludzi\n";
     cout << "list_rev: wypisuje liste ludzi od konca\n";
-    cout << "exit: zatrzymuje program";
+    cout << "exit: zatrzymuje program\n";
+    cout << "bday: postarza ludzi o rok\n";
 }
 
 void add_n_humans(list<Human> &lst, const unsigned int n_hum)
@@ -78,7 +82,8 @@ void print_list(list<Human> &lst)
     //     cout << "Imie: " << it->getName() << "\t Wiek: " << it->getAge() << "\t Jest potworem: " << it->isMonster() << "\n";
     //     it++;
     // }
-    for (Human h:lst){
+    for (Human h : lst)
+    {
         cout << "Imie: " << h.getName() << "\t Wiek: " << h.getAge() << "\t Jest potworem: " << h.isMonster() << "\n";
     }
 }
@@ -89,6 +94,16 @@ void print_list_reverse(list<Human> &lst)
     while (it != lst.rend())
     {
         cout << "Imie: " << it->getName() << "\t Wiek: " << it->getAge() << "\t Jest potworem: " << it->isMonster() << "\n";
+        it++;
+    }
+}
+
+void bday(list<Human> &lst)
+{
+    auto it = lst.begin();
+    while (it != lst.end())
+    {
+        it->birthday();
         it++;
     }
 }
